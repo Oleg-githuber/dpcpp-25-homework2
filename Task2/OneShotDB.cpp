@@ -8,14 +8,14 @@ std::string OneShotDB::getData(const std::string& key)
 	if (_cache.find(key) == _cache.end())
 	{
 		_cache[key] = _shots - 1;
-		return "value";
+		return _realDB->getData(key);
 	}
 	else
 	{
 		if (_cache.at(key) > 0)
 		{
 			--_cache[key];
-			return "value";
+			return _realDB->getData(key);
 		}
 		else
 		{
